@@ -63,6 +63,9 @@ class Embed {
     }
 
     opts.timePeriod = opts.timePeriod.toLowerCase();
+
+    if (opts.width === undefined) opts.width = '100%';
+    if (opts.height === undefined) opts.height = '100%';
   }
 
   get src() {
@@ -81,11 +84,8 @@ class Embed {
     iframe.setAttribute('src', this.src);
     iframe.setAttribute('frameborder', 0);
     iframe.setAttribute('allowfullscreen', true);
-
-    if (this.opts.width && this.opts.height) {
-      iframe.setAttribute('width', this.opts.width);
-      iframe.setAttribute('height', this.opts.height);
-    }
+    iframe.setAttribute('width', this.opts.width);
+    iframe.setAttribute('height', this.opts.height);
 
     return iframe;
   }

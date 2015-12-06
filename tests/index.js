@@ -62,13 +62,21 @@ describe('Embed', function () {
   });
 
   it('handles the width & height opts', function() {
+    var iframe;
+
     // Shim
     window = new Browser()
     window.visit('');
     document = window.document;
 
+    var embed = new Embed('bitfinex', 'btcusd');
+    iframe = embed.createIframe();
+
+    assert.equal(iframe.getAttribute('width'), '100%');
+    assert.equal(iframe.getAttribute('height'), '100%');
+
     var embed = new Embed('bitfinex', 'btcusd', { width: 500, height: 300 });
-    var iframe = embed.createIframe();
+    iframe = embed.createIframe();
 
     assert.equal(iframe.getAttribute('width'), '500');
     assert.equal(iframe.getAttribute('height'), '300');
