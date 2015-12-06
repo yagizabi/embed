@@ -68,13 +68,13 @@ var chart = new cryptowatch.Embed('bitfinex', 'btcusd', {
 });
 ```
 
-### `colorScheme`
+### `customColorScheme`
 
 Alternatively, a completely custom color scheme may be defined.
 
 ```js
 var chart = new cryptowatch.Embed('bitfinex', 'btcusd', {
-  colorScheme: {
+  customColorScheme: {
     bg:           "000000",
     text:         "b2b2b2",
     textStrong:   "e5e5e5", // Emphasized text
