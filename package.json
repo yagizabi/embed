@@ -9,6 +9,10 @@
     "type": "git",
     "url": "https://github.com/cryptowatch/embed.git"
   },
+  "scripts": {
+    "build": "webpack",
+    "prepublish": "npm run build"
+  },
   "devDependencies": {
     "babel-core": "~6.3.2",
     "babel-loader": "~6.2.0",
