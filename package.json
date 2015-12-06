@@ -10,10 +10,12 @@
     "url": "https://github.com/cryptowatch/embed.git"
   },
   "scripts": {
-    "prepublish": "$(npm bin)/babel -sd dist/ src/"
+    "prepublish": "$(npm bin)/babel -sd dist/ src/ --presets es2015 --plugins add-module-exports"
   },
   "devDependencies": {
     "babel": "6.3.13",
-    "babel-cli": "6.3.13"
+    "babel-cli": "6.3.13",
+    "babel-plugin-add-module-exports": "^0.1.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.1.4"
   }
 }
