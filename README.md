@@ -55,7 +55,7 @@ Fixed dimensions may be defined for the iframe. The default values for both are 
 ```js
 var chart = new cryptowatch.Embed('bitfinex', 'btcusd', {
   width: 800,
-  height: 200
+  height: 500
 });
 ```
 
