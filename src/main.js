@@ -29,19 +29,29 @@ const validTimePeriods = [
 
 class Embed {
   constructor(exchange, currencyPair, opts) {
-    this.config = config;
-    this._validateConfig();
-  }
+    this.exchange = exchange;
+    this.currencyPair = currencyPair;
+    this.opts = opts;
 
-  _validateConfig() {
-    this._assertConfigDefined('exchange');
-    if (validExchanges.indexOf(config.exchange) === -1) {
-      throw new Error(`Unknown exchange "${config.exchange}"\nValid exchanges: ${validExchanges.join(', ')}`);
+    // Validate exchange
+    if (exchange === undefined) {
+      throw new Error('exchange required');
     }
-    this._assertConfigDefined('currencyPair');
-    this._assertConfigDefined('timePeriod');
-    if (validTimePeriods.indexOf(config.timePeriod) === -1) {
-      throw new Error(`Unknown time period "${config.exchange}"\nValid timePeriods: ${validTimePeriods.join(', ')}`);
+    if (validExchanges.indexOf(exchange) === -1) {
+      throw new Error(`Unknown exchange "${exchange}"\nValid exchanges: ${validExchanges.join(', ')}`);
+    }
+
+    // Validate currencyPair
+    if (currencyPair === undefined) {
+      throw new Error('currencyPair required');
+    }
+
+    if (opts.timePeriod !== undefined) {
+      if (validTimePeriods.indexOf(opts.timePeriod) === -1) {
+        throw new Error(`Unknown time period "${opts.timePeriod}"\nValid timePeriods: ${validTimePeriods.join(', ')}`);
+      }
+    } else {
+      opts.timePeriod = '1H';
     }
   }
 
@@ -57,7 +67,7 @@ class Embed {
     }
 
     let iframe = document.createElement('iframe');
-    iframe.setAttribute('src', `https://cryptowat.ch/${this.config.exchange}/${this.config.currencyPair}/${this.config.timePeriod}`);
+    iframe.setAttribute('src', `https://embed.cryptowat.ch/${this.exchange}/${this.currencyPair}/${this.config.timePeriod}`);
 
     elem.appendChild(iframe);
   }
