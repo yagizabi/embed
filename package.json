@@ -2,7 +2,7 @@
   "name": "cryptowatch-embed",
   "version": "0.1.1",
   "description": "Client library for configuring and embedding Cryptowatch charts",
-  "main": "main.js",
+  "main": "dist/main.js",
   "author": "Artur Sapek",
   "license": "MIT",
   "repository": {
@@ -10,13 +10,10 @@
     "url": "https://github.com/cryptowatch/embed.git"
   },
   "scripts": {
-    "build": "webpack",
-    "prepublish": "npm run build"
+    "prepublish": "$(npm bin)/babel -sd dist/ src/"
   },
   "devDependencies": {
-    "babel-core": "~6.3.2",
-    "babel-loader": "~6.2.0",
-    "babel-preset-es2015": "^6.3.13",
-    "webpack": "~1.12.0"
+    "babel": "6.3.13",
+    "babel-cli": "6.3.13"
   }
 }
