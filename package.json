@@ -22,6 +22,7 @@
     "mocha": "^2.1.0"
   },
   "dependencies": {
-    "urijs": "^1.17.0"
+    "urijs": "^1.17.0",
+    "zombie": "^4.2.1"
   }
 }

@@ -1,5 +1,6 @@
 var assert = require('assert');
 var URI = require('urijs');
+var Browser = require("zombie")
 var Embed = require('../dist/main.js');
 
 describe('Embed', function () {
@@ -52,6 +53,7 @@ describe('Embed', function () {
     var encodedColors = uri.query(true)['customColorScheme'];
     var decodedColors = JSON.parse(URI.decodeQuery(encodedColors));
 
+    // Verify that the colors were encoded correctly (order does not matter)
     for (var key in colors) {
       if (colors.hasOwnProperty(key)) {
         assert.equal(colors[key], decodedColors[key]);
@@ -59,6 +61,16 @@ describe('Embed', function () {
     }
   });
 
+  it('handles the width & height opts', function() {
+    // Shim
+    window = new Browser()
+    window.visit('');
+    document = window.document;
 
+    var embed = new Embed('bitfinex', 'btcusd', { width: 500, height: 300 });
+    var iframe = embed.createIframe();
 
+    assert.equal(iframe.getAttribute('width'), '500');
+    assert.equal(iframe.getAttribute('height'), '300');
+  });
 });
