@@ -11,12 +11,14 @@
   },
   "scripts": {
     "build": "mkdir -p dist; $(npm bin)/babel -sd dist/ src/ --presets es2015 --plugins add-module-exports",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build",
+    "unit": "$(npm bin)/mocha tests/*.js"
   },
   "devDependencies": {
     "babel": "6.3.13",
     "babel-cli": "6.3.13",
     "babel-plugin-add-module-exports": "^0.1.1",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.1.4"
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.1.4",
+    "mocha": "^2.1.0"
   }
 }
