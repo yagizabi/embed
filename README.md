@@ -70,7 +70,7 @@ var chart = new cryptowatch.Embed('bitfinex', 'btcusd', {
 
 ### `customColorScheme`
 
-Alternatively, a completely custom color scheme may be defined.
+Alternatively, a custom color scheme may be defined.
 
 ```js
 var chart = new cryptowatch.Embed('bitfinex', 'btcusd', {
@@ -89,3 +89,6 @@ var chart = new cryptowatch.Embed('bitfinex', 'btcusd', {
   }
 });
 ```
+
+Future versions of this library will also enable you to add indicators/overlays.
+The current version renders only the candlestick chart with volume underneath.
