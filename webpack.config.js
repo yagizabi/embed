@@ -1,5 +1,5 @@
 module.exports = {
-  entry: './src/embed.js',
+  entry: './index.js',
 
   output: {
     path: __dirname,
@@ -7,7 +7,7 @@ module.exports = {
   },
 
   resolve: {
-    root: __dirname + '/src',
+    root: __dirname,
   },
 
   module: {
