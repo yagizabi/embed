@@ -66,7 +66,7 @@ class Embed {
   }
 
   get src() {
-    let uri = URI(`https://embed.cryptowat.ch/${this.exchange}/${this.currencyPair}/${this.opts.timePeriod}`);
+    let uri = new URI(`https://embed.cryptowat.ch/${this.exchange}/${this.currencyPair}/${this.opts.timePeriod}`);
     if (this.opts.presetColorScheme !== undefined) {
       uri.query({ presetColorScheme: this.opts.presetColorScheme });
     }
