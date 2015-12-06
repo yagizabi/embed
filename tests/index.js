@@ -1,4 +1,5 @@
 var assert = require('assert');
+var URI = require('urijs');
 var Embed = require('../dist/main.js');
 
 describe('Embed', function () {
@@ -22,5 +23,42 @@ describe('Embed', function () {
       'https://embed.cryptowat.ch/bitfinex/btcusd/1h?presetColorScheme=albuquerque'
     );
   });
+
+  it('handles the presetColorScheme opt', function() {
+    assert.equal(
+      (new Embed('bitfinex', 'btcusd', { presetColorScheme: 'albuquerque' }).src),
+      'https://embed.cryptowat.ch/bitfinex/btcusd/1h?presetColorScheme=albuquerque'
+    );
+  });
+
+  it('handles the customColorScheme opt', function() {
+    var colors = {
+      bg:           "000000",
+      text:         "b2b2b2",
+      textStrong:   "e5e5e5",
+      textWeak:     "7f7f7f",
+      short:        "C60606",
+      shortFill:    "C60606",
+      long:         "00B909",
+      longFill:     "000000",
+      cta:          "363D52",
+      ctaHighlight: "414A67",
+      alert:        "FFD506"
+    };
+
+    var encodedColors = encodeURIComponent(JSON.stringify(colors));
+    var embed = new Embed('bitfinex', 'btcusd', { customColorScheme: colors });
+    var uri = new URI(embed.src);
+    var encodedColors = uri.query(true)['customColorScheme'];
+    var decodedColors = JSON.parse(URI.decodeQuery(encodedColors));
+
+    for (var key in colors) {
+      if (colors.hasOwnProperty(key)) {
+        assert.equal(colors[key], decodedColors[key]);
+      }
+    }
+  });
+
+
 
 });

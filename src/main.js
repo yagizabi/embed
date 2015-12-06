@@ -69,19 +69,32 @@ class Embed {
     let uri = new URI(`https://embed.cryptowat.ch/${this.exchange}/${this.currencyPair}/${this.opts.timePeriod}`);
     if (this.opts.presetColorScheme !== undefined) {
       uri.query({ presetColorScheme: this.opts.presetColorScheme });
+    } else if (this.opts.customColorScheme !== undefined) {
+      let encodedColors = encodeURIComponent(JSON.stringify(this.opts.customColorScheme));
+      uri.query({ customColorScheme: encodedColors });
     }
     return uri.toString()
+  }
+
+  createIframe() {
+    let iframe = document.createElement('iframe');
+    iframe.setAttribute('src', this.src);
+    iframe.setAttribute('frameborder', 0);
+    iframe.setAttribute('allowfullscreen', true);
+
+    if (this.opts.width && this.opts.height) {
+      iframe.setAttribute('width', this.opts.width);
+      iframe.setAttribute('height', this.opts.height);
+    }
+
+    return iframe;
   }
 
   mount(elem) {
     if (typeof elem === 'string') {
       elem = document.querySelector(elem);
     }
-
-    let iframe = document.createElement('iframe');
-    iframe.setAttribute('src', this.src);
-
-    elem.appendChild(iframe);
+    elem.appendChild(this.createIframe());
   }
 }
 
