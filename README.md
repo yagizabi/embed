@@ -75,8 +75,8 @@ Alternatively, a completely custom color scheme may be defined.
 ```js
 var chart = new cryptowatch.Embed('bitfinex', 'btcusd', {
   customColorScheme: {
-    bg:           "000000",
-    text:         "b2b2b2",
+    bg:           "000000", // Background
+    text:         "b2b2b2", // Normal text
     textStrong:   "e5e5e5", // Emphasized text
     textWeak:     "7f7f7f", // De-emphasized text
     short:        "C60606", // Stroke color of decreasing candlesticks, ask orders, and other "short" related UI
@@ -86,6 +86,100 @@ var chart = new cryptowatch.Embed('bitfinex', 'btcusd', {
     cta:          "363D52", // Color of buttons and other prominent UI elements
     ctaHighlight: "414A67", // Color of buttons and other prominent UI elements when hovered over
     alert:        "FFD506"  // Color associated with price & volume alerts
+  }
+});
+```
+
+### `chartConfig`
+
+This one's a doozy. If you wish, you may configure the indicators, overlays, and other aspects of the chart. By default,
+our library will render a price chart with only the volume section underneath.
+
+An easier way to generate this config is to use the "Embed" menu in the footer on https://cryptoat.ch. It
+automatically generates all of this using your current local config.
+
+```js
+var chart = new cryptowatch.Embed('bitfinex', 'btcusd', {
+  chartConfig: {
+    candleWidth: 5,
+    candles: {
+      spacing: 3
+    },
+    indicators: {
+      ema: {
+        periods: [10,21,100,null,null],
+        show: true
+      },
+      sma: {
+        periods: [15,50,null,null,null],
+        show: false
+      },
+      sar: {
+        step: 0.025,
+        maxStep: 0.05,
+        show: true
+      },
+      bollingerBands: {
+        show: false,
+        period: 20,
+        stddevs: 2
+      },
+      keltnerChannel: {
+        show: false,
+        atrPeriod: 14,
+        atrs:      2
+      },
+      volume: {
+        show: true,
+        height: 90 // Indicators which appear in their own section below the price chart have a height
+      },
+      macd: {
+        show: true,
+        periods: [10,26],
+        lag: 9,
+        height: 150
+      },
+      rsi: {
+        show: false,
+        periods: 14,
+        height: 100
+      },
+      stochRSI: {
+        show: false,
+        periods: 14,
+        maPeriods: 5,
+        height: 90
+      },
+      obv: {
+        show: false,
+        maPeriods: 21,
+        height: 100
+      },
+      aroon: {
+        show: false,
+        periods: 25,
+        height: 100
+      },
+      ichimoku: {
+        show: false,
+        tenkanPeriod: 9,
+        kijunPeriod:  26
+      },
+      chandelierExit: {
+        show: false,
+        periods: 22,
+        atrs: 1
+      },
+      zigzag: {
+        show: false,
+        threshold: 7
+      }
+    },
+    chartStyle: 'OHLC', // Values: OHLC, heikenAshi, bar, line, mountain
+    yAxis: 'linear',    // Values: linear, log
+    yaxis: {
+      depth: true
+    },
   }
 });
 ```
