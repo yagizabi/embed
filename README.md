@@ -48,6 +48,17 @@ var chart = new cryptowatch.Embed('bitfinex', 'btcusd');
 
 A few options can be provided to configure the chart.
 
+### `width` and `height`
+
+Fixed dimensions may be defined for the iframe. The default values for both are `100%`.
+
+```js
+var chart = new cryptowatch.Embed('bitfinex', 'btcusd', {
+  width: 800,
+  height: 200
+});
+```
+
 ### `timePeriod`
 
 Any of the supported time periods may be chosen.
