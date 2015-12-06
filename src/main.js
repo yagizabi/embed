@@ -28,7 +28,7 @@ const validTimePeriods = [
 ]
 
 class Embed {
-  constructor(exchange, currencyPair, opts) {
+  constructor(exchange, currencyPair, opts={}) {
     this.exchange = exchange;
     this.currencyPair = currencyPair;
     this.opts = opts;
@@ -55,10 +55,8 @@ class Embed {
     }
   }
 
-  _assertConfigDefined(key) {
-    if (this.config[key] === undefined) {
-      throw new Error(`Missing required config "${key}"`);
-    }
+  get src() {
+    return `https://embed.cryptowat.ch/${this.exchange}/${this.currencyPair}/${this.opts.timePeriod}`
   }
 
   mount(elem) {
@@ -67,7 +65,7 @@ class Embed {
     }
 
     let iframe = document.createElement('iframe');
-    iframe.setAttribute('src', `https://embed.cryptowat.ch/${this.exchange}/${this.currencyPair}/${this.config.timePeriod}`);
+    iframe.setAttribute('src', this.src);
 
     elem.appendChild(iframe);
   }
