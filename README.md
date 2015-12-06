@@ -81,7 +81,7 @@ var chart = new cryptowatch.Embed('bitfinex', 'btcusd', {
 
 ### `customColorScheme`
 
-Alternatively, a custom color scheme may be defined.
+Alternatively, a custom color scheme may be defined. In this version, `rgba(...)` values are *not* supported. Please use hex values.
 
 ```js
 var chart = new cryptowatch.Embed('bitfinex', 'btcusd', {
