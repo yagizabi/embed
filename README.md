@@ -96,7 +96,19 @@ var chart = new cryptowatch.Embed('bitfinex', 'btcusd', {
     longFill:     "000000", // Fill color of increasing candlesticks
     cta:          "363D52", // Color of buttons and other prominent UI elements
     ctaHighlight: "414A67", // Color of buttons and other prominent UI elements when hovered over
-    alert:        "FFD506"  // Color associated with price & volume alerts
+    alert:        "FFD506", // Color associated with price & volume alerts
+
+    // Optionally also provide an object defining colors for various TA
+    ta: {
+      lines:       ["2BC400", "E01500", "22A9CB", "C31B64", "E3C22D"], // EMA, MA, and other lies
+      channel:     "68C01C", // Keltner channel, bollinger bands
+      // Ichimoku lines
+      tenkanSen:   "5BA6B3",
+      kijunSen:    "CD66A9",
+      chikouSpan:  "626174",
+      senkouSpanA: "6CB57E",
+      senkouSpanB: "C86C64"
+    }
   }
 });
 ```
