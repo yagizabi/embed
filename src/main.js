@@ -29,6 +29,10 @@ const validTimePeriods = [
   '1', '3', '5', '15', '30', '1H', '2H', '4H', '6H', '12H', '1D', '3D', '1W'
 ]
 
+const validLocales = [
+  'en', 'es', 'zh-CN', 'de', 'ja-JP', 'el-GR', 'da-DK'
+]
+
 const requiredColorSchemeKeys = [
     'bg', 'text', 'textStrong', 'textWeak', 'short', 'shortFill', 'long', 'longFill', 'cta', 'ctaHighlight', 'alert'
 ]
@@ -62,6 +66,12 @@ class Embed {
       opts.timePeriod = '1H';
     }
 
+    if (opts.locale !== undefined) {
+      if (validLocales.indexOf(opts.locale) === -1) {
+        throw new Error(`Unknown locale "${opts.locale}"\nValid locales: ${validLocales.join(', ')}`);
+      }
+    }
+
     opts.timePeriod = opts.timePeriod.toLowerCase();
 
     if (opts.width === undefined) opts.width = '100%';
@@ -70,12 +80,17 @@ class Embed {
 
   get src() {
     let uri = new URI(`https://embed.cryptowat.ch/${this.exchange}/${this.currencyPair}/${this.opts.timePeriod}`);
-    if (this.opts.presetColorScheme !== undefined) {
-      uri.query({ presetColorScheme: this.opts.presetColorScheme });
-    } else if (this.opts.customColorScheme !== undefined) {
-      let encodedColors = encodeURIComponent(JSON.stringify(this.opts.customColorScheme));
-      uri.query({ customColorScheme: encodedColors });
+    let query = {}
+    if (this.opts.locale) {
+      query.locale = this.opts.locale;
     }
+
+    if (this.opts.presetColorScheme !== undefined) {
+      query.presetColorScheme = this.opts.presetColorScheme;
+    } else if (this.opts.customColorScheme !== undefined) {
+      query.customColorScheme = encodeURIComponent(JSON.stringify(this.opts.customColorScheme));
+    }
+    uri.query(query);
     return uri.toString()
   }
 

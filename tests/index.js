@@ -32,6 +32,13 @@ describe('Embed', function () {
     );
   });
 
+  it('handles the locale opt', function() {
+    assert.equal(
+      (new Embed('quoine', 'btcjpy', { locale: 'ja-JP' }).src),
+      'https://embed.cryptowat.ch/quoine/btcjpy/1h?locale=ja-JP'
+    );
+  });
+
   it('handles the customColorScheme opt', function() {
     var colors = {
       bg:           "000000",
