@@ -1,5 +1,7 @@
 # Cryptowatch Embed
 
+[![npm version](https://badge.fury.io/js/cryptowatch-embed.svg)](https://badge.fury.io/js/cryptowatch-embed)
+
 Small library for embedding [Cryptowatch](https://cryptowat.ch) charts on a website.
 
 ## Usage
@@ -61,7 +63,12 @@ var chart = new cryptowatch.Embed('bitfinex', 'btcusd', {
 
 ### `timePeriod`
 
-Any of the supported time periods may be chosen.
+Any of the supported time periods may be forcefully loaded on every page load:
+
+`1`, `3`, `5`, `15`, `30`, `1h`, `2h`, `4h`, `6h`, `12h`, `1d`, `3d`, `1w`
+
+We recommend omitting this option, which will cause the application to use whatever time period the client
+last chose, or `1h` for new visitors.
 
 ```js
 var chart = new cryptowatch.Embed('bitfinex', 'btcusd', {
@@ -71,7 +78,11 @@ var chart = new cryptowatch.Embed('bitfinex', 'btcusd', {
 
 ### `presetColorScheme`
 
-Any of the preset color schemes may be chosen.
+Any of the preset color schemes may be chosen:
+
+`standard`, `candycane`, `albuquerque`, `delek`, `blueprint`, `ballmer`, `bushido`
+
+The default value is `standard`.
 
 ```js
 var chart = new cryptowatch.Embed('bitfinex', 'btcusd', {
@@ -81,7 +92,7 @@ var chart = new cryptowatch.Embed('bitfinex', 'btcusd', {
 
 ### `customColorScheme`
 
-Alternatively, a custom color scheme may be defined. In this version, `rgba(...)` values are *not* supported. Please use hex values.
+Alternatively, a custom color scheme may be defined. `rgba(...)` values are currently *not* supported. Please use hex values.
 
 ```js
 var chart = new cryptowatch.Embed('bitfinex', 'btcusd', {
