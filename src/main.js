@@ -62,8 +62,9 @@ class Embed {
       if (validTimePeriods.indexOf(opts.timePeriod) === -1) {
         throw new Error(`Unknown time period "${opts.timePeriod}"\nValid timePeriods: ${validTimePeriods.join(', ')}`);
       }
+      opts.timePeriod = opts.timePeriod.toLowerCase();
     } else {
-      opts.timePeriod = '1H';
+      opts.timePeriod = null; // Will load last selected for returning users, or default (1H) for new users
     }
 
     if (opts.locale !== undefined) {
@@ -72,14 +73,17 @@ class Embed {
       }
     }
 
-    opts.timePeriod = opts.timePeriod.toLowerCase();
-
     if (opts.width === undefined) opts.width = '100%';
     if (opts.height === undefined) opts.height = '100%';
   }
 
   get src() {
-    let uri = new URI(`https://embed.cryptowat.ch/${this.exchange}/${this.currencyPair}/${this.opts.timePeriod}`);
+    let path = `/${this.exchange}/${this.currencyPair}`;
+    if (this.opts.timePeriod !== null) {
+      path += `/${this.opts.timePeriod}`;
+    }
+
+    let uri = new URI('https://embed.cryptowat.ch'+path);
     let query = {}
     if (this.opts.locale) {
       query.locale = this.opts.locale;

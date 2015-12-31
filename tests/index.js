@@ -7,7 +7,7 @@ describe('Embed', function () {
   it('generates the default URL when given no opts', function() {
     assert.equal(
       (new Embed('bitfinex', 'btcusd').src),
-      'https://embed.cryptowat.ch/bitfinex/btcusd/1h'
+      'https://embed.cryptowat.ch/bitfinex/btcusd'
     );
   });
 
@@ -21,21 +21,21 @@ describe('Embed', function () {
   it('handles the presetColorScheme opt', function() {
     assert.equal(
       (new Embed('bitfinex', 'btcusd', { presetColorScheme: 'albuquerque' }).src),
-      'https://embed.cryptowat.ch/bitfinex/btcusd/1h?presetColorScheme=albuquerque'
+      'https://embed.cryptowat.ch/bitfinex/btcusd?presetColorScheme=albuquerque'
     );
   });
 
   it('handles the presetColorScheme opt', function() {
     assert.equal(
       (new Embed('bitfinex', 'btcusd', { presetColorScheme: 'albuquerque' }).src),
-      'https://embed.cryptowat.ch/bitfinex/btcusd/1h?presetColorScheme=albuquerque'
+      'https://embed.cryptowat.ch/bitfinex/btcusd?presetColorScheme=albuquerque'
     );
   });
 
   it('handles the locale opt', function() {
     assert.equal(
       (new Embed('quoine', 'btcjpy', { locale: 'ja-JP' }).src),
-      'https://embed.cryptowat.ch/quoine/btcjpy/1h?locale=ja-JP'
+      'https://embed.cryptowat.ch/quoine/btcjpy?locale=ja-JP'
     );
   });
 
