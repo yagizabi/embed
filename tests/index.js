@@ -16,6 +16,12 @@ describe('Embed', function () {
       (new Embed('bitfinex', 'btcusd', { timePeriod: '6H' }).src),
       'https://embed.cryptowat.ch/bitfinex/btcusd/6h'
     );
+
+    // Input should be case insensitive
+    assert.equal(
+      (new Embed('okcoin', 'btccny', { timePeriod: '1w' }).src),
+      'https://embed.cryptowat.ch/okcoin/btccny/1w'
+    );
   });
 
   it('handles the presetColorScheme opt', function() {
