@@ -26,7 +26,7 @@ const validExchanges = [
 ]
 
 const validTimePeriods = [
-  '1', '3', '5', '15', '30', '1H', '2H', '4H', '6H', '12H', '1D', '3D', '1W'
+  '1', '3', '5', '15', '30', '1h', '2h', '4h', '6h', '12h', '1d', '3d', '1w'
 ]
 
 const validLocales = [
@@ -58,7 +58,8 @@ class Embed {
     // TODO validate that exchange supports this currencyPair (generated config)
     // As this is now, it will just render an iframe containing the 404 page
 
-    if (opts.timePeriod !== undefined) {
+    if (opts.timePeriod !== undefined && (typeof opts.timePeriod) === 'string') {
+      opts.timePeriod = opts.timePeriod.toLowerCase();
       if (validTimePeriods.indexOf(opts.timePeriod) === -1) {
         throw new Error(`Unknown time period "${opts.timePeriod}"\nValid timePeriods: ${validTimePeriods.join(', ')}`);
       }
