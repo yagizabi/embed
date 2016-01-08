@@ -4,6 +4,10 @@
 
 Small library for embedding [Cryptowatch](https://cryptowat.ch) charts on a website.
 
+## Live Demo
+
+[https://jsfiddle.net/q87k7gd5](https://jsfiddle.net/q87k7gd5/)
+
 ## Usage
 
 ### Vanilla ES5
