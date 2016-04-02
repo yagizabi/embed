@@ -4,6 +4,7 @@ import URI from 'urijs';
 // using config from go codebase
 const validExchanges = [
 	'796',
+  'bitbank',
 	'bitmex',
 	'bitfinex',
 	'bitflyer',
@@ -74,6 +75,8 @@ class Embed {
       }
     }
 
+    if (opts.host === undefined) opts.host = 'embed.cryptowat.ch';
+    if (opts.protocol === undefined) opts.protocol = 'https';
     if (opts.width === undefined) opts.width = '100%';
     if (opts.height === undefined) opts.height = '100%';
   }
@@ -84,7 +87,7 @@ class Embed {
       path += `/${this.opts.timePeriod}`;
     }
 
-    let uri = new URI('https://embed.cryptowat.ch'+path);
+    let uri = new URI(`${this.opts.protocol}://${this.opts.host}${path}`);
     let query = {}
     if (this.opts.locale) {
       query.locale = this.opts.locale;

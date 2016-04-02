@@ -45,6 +45,13 @@ describe('Embed', function () {
     );
   });
 
+  it('handles the host and protocol opts', function() {
+    assert.equal(
+      (new Embed('bitbank', 'btcusd', { locale: 'ja-JP', host: 'chart.bitbanktrade.jp', protocol: 'http' }).src),
+      'http://chart.bitbanktrade.jp/bitbank/btcusd?locale=ja-JP'
+    );
+  });
+
   it('handles the customColorScheme opt', function() {
     var colors = {
       bg:           "000000",
