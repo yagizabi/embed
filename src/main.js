@@ -3,27 +3,27 @@ import URI from 'urijs';
 // TODO generate this and corresponding validCurrencyPairs
 // using config from go codebase
 const validExchanges = [
-	'796',
+  '796',
   'bitbank',
-	'bitmex',
-	'bitfinex',
-	'bitflyer',
-	'bitstamp',
-	'bitvc',
-	'bitx',
-	'btc-china',
-	'btce',
-	'cexio',
-	'coinbase',
-	'cryptsy',
-	'gemini',
-	'huobi',
-	'kraken',
-	'mexbt',
-	'mtgox',
-	'okcoin',
-	'poloniex',
-	'quoine'
+  'bitmex',
+  'bitfinex',
+  'bitflyer',
+  'bitstamp',
+  'bitvc',
+  'bitx',
+  'btc-china',
+  'btce',
+  'cexio',
+  'coinbase',
+  'cryptsy',
+  'gemini',
+  'huobi',
+  'kraken',
+  'mexbt',
+  'mtgox',
+  'okcoin',
+  'poloniex',
+  'quoine'
 ]
 
 const validTimePeriods = [
