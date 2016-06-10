@@ -1,6 +1,6 @@
 {
   "name": "cryptowatch-embed",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Client library for configuring and embedding Cryptowatch charts",
   "main": "dist/main.js",
   "author": "Artur Sapek",
