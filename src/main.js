@@ -92,6 +92,12 @@ class Embed {
     if (this.opts.locale) {
       query.locale = this.opts.locale;
     }
+    if (this.opts.query) {
+      // Extend query with additional params that may have been added
+      for (let key in this.opts.query) {
+        if (query[key] === undefined) query[key] = this.opts.query[key];
+      }
+    }
 
     if (this.opts.presetColorScheme !== undefined) {
       query.presetColorScheme = this.opts.presetColorScheme;

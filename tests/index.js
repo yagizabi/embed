@@ -52,6 +52,13 @@ describe('Embed', function () {
     );
   });
 
+  it('handles extra query opts', function() {
+    assert.equal(
+      (new Embed('bitbank', 'btcusd', { locale: 'ja-JP', host: 'chart.bitbanktrade.jp', protocol: 'http', query: { branding: 'special' } }).src),
+      'http://chart.bitbanktrade.jp/bitbank/btcusd?locale=ja-JP&branding=special'
+    );
+  });
+
   it('handles the customColorScheme opt', function() {
     var colors = {
       bg:           "000000",
@@ -101,4 +108,5 @@ describe('Embed', function () {
     assert.equal(iframe.getAttribute('width'), '500');
     assert.equal(iframe.getAttribute('height'), '300');
   });
+
 });
