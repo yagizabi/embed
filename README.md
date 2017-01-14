@@ -15,7 +15,7 @@ Small library for embedding [Cryptowatch](https://cryptowat.ch) charts on a webs
 Include the ES5 build in your page:
 
 ```html
-<script type="text/javascript" src="https://cdn.cryptowat.ch/assets/build/scripts/dist/embed.js"></script>
+<script type="text/javascript" src="https://static.cryptowat.ch/assets/scripts/embed.bundle.js"></script>
 ```
 
 Use the library in the global `cryptowatch` namespace:
