@@ -1,7 +1,3 @@
-import URI from 'urijs';
-
-// TODO generate this and corresponding validCurrencyPairs
-// using config from go codebase
 const validTimePeriods = [
   '1m', '3m', '5m', '15m', '30m', '1h', '2h', '4h', '6h', '12h', '1d', '3d', '1w'
 ]
@@ -13,6 +9,19 @@ const validLocales = [
 const requiredColorSchemeKeys = [
     'bg', 'text', 'textStrong', 'textWeak', 'short', 'shortFill', 'long', 'longFill', 'cta', 'ctaHighlight', 'alert'
 ]
+
+function queryToString(query) {
+  let pairs = [];
+  for (let key in query) {
+    pairs.push(`${key}=${query[key]}`);
+  }
+
+  if (pairs.length === 0) {
+    return '';
+  } else {
+    return '?'+pairs.join('&');
+  }
+}
 
 class Embed {
   constructor(exchange, currencyPair, opts={}) {
@@ -60,7 +69,7 @@ class Embed {
       path += `/${this.opts.timePeriod}`;
     }
 
-    let uri = new URI(`${this.opts.protocol}://${this.opts.host}${path}`);
+    let uri = `${this.opts.protocol}://${this.opts.host}${path}`;
     let query = {}
     if (this.opts.locale) {
       query.locale = this.opts.locale;
@@ -77,8 +86,9 @@ class Embed {
     } else if (this.opts.customColorScheme !== undefined) {
       query.customColorScheme = encodeURIComponent(JSON.stringify(this.opts.customColorScheme));
     }
-    uri.query(query);
-    return uri.toString()
+
+    uri += queryToString(query);
+    return uri;
   }
 
   createIframe() {
