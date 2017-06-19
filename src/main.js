@@ -2,30 +2,6 @@ import URI from 'urijs';
 
 // TODO generate this and corresponding validCurrencyPairs
 // using config from go codebase
-const validExchanges = [
-  '796',
-  'bitbank',
-  'bitmex',
-  'bitfinex',
-  'bitflyer',
-  'bitstamp',
-  'bitvc',
-  'bitx',
-  'btc-china',
-  'btce',
-  'cexio',
-  'coinbase',
-  'cryptsy',
-  'gemini',
-  'huobi',
-  'kraken',
-  'mexbt',
-  'mtgox',
-  'okcoin',
-  'poloniex',
-  'quoine'
-]
-
 const validTimePeriods = [
   '1m', '3m', '5m', '15m', '30m', '1h', '2h', '4h', '6h', '12h', '1d', '3d', '1w'
 ]
@@ -47,9 +23,6 @@ class Embed {
     // Validate exchange
     if (exchange === undefined) {
       throw new Error('exchange required');
-    }
-    if (validExchanges.indexOf(exchange) === -1) {
-      throw new Error(`Unknown exchange "${exchange}"\nValid exchanges: ${validExchanges.join(', ')}`);
     }
 
     // Validate currencyPair
