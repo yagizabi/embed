@@ -6,7 +6,7 @@ Small library for embedding [Cryptowatch](https://cryptowat.ch) charts on a webs
 
 ## Live Demo
 
-[https://jsfiddle.net/s2k0ahf1/441/](https://jsfiddle.net/s2k0ahf1/1/)
+[https://jsfiddle.net/s2k0ahf1/441/](https://jsfiddle.net/s2k0ahf1/441/)
 
 ## Usage
 
