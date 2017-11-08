@@ -6,7 +6,7 @@ Small library for embedding [Cryptowatch](https://cryptowat.ch) charts on a webs
 
 ## Live Demo
 
-[https://jsfiddle.net/s2k0ahf1/1/](https://jsfiddle.net/s2k0ahf1/1/)
+[https://jsfiddle.net/s2k0ahf1/441/](https://jsfiddle.net/s2k0ahf1/1/)
 
 ## Usage
 
@@ -84,47 +84,23 @@ var chart = new cryptowatch.Embed('bitfinex', 'btcusd', {
 
 Any of the preset color schemes may be chosen:
 
-`standard`, `candycane`, `albuquerque`, `delek`, `blueprint`, `ballmer`, `bushido`
+```
+standard
+candycane
+albuquerque
+epaper
+delek
+blueprint
+ballmer
+bushido
+ishihara
+```
 
 The default value is `standard`.
 
 ```js
 var chart = new cryptowatch.Embed('bitfinex', 'btcusd', {
   presetColorScheme: 'delek'
-});
-```
-
-### `customColorScheme`
-
-Alternatively, a custom color scheme may be defined. `rgba(...)` values are currently *not* supported. Please use hex values.
-
-```js
-var chart = new cryptowatch.Embed('bitfinex', 'btcusd', {
-  customColorScheme: {
-    bg:           "000000",
-    text:         "b2b2b2",
-    textStrong:   "e5e5e5", // Emphasized text
-    textWeak:     "7f7f7f", // De-emphasized text
-    short:        "C60606", // Stroke color of decreasing candlesticks, ask orders, and other "short" related UI
-    shortFill:    "C60606", // Fill color of decreasing candlesticks
-    long:         "00B909", // Color of increasing candlesticks, bid orders, and other "long" related UI
-    longFill:     "000000", // Fill color of increasing candlesticks
-    cta:          "363D52", // Color of buttons and other prominent UI elements
-    ctaHighlight: "414A67", // Color of buttons and other prominent UI elements when hovered over
-    alert:        "FFD506", // Color associated with price & volume alerts
-
-    // Optionally also provide an object defining colors for various TA
-    ta: {
-      lines:       ["2BC400", "E01500", "22A9CB", "C31B64", "E3C22D"], // EMA, MA, and other lies
-      channel:     "68C01C", // Keltner channel, bollinger bands
-      // Ichimoku lines
-      tenkanSen:   "5BA6B3",
-      kijunSen:    "CD66A9",
-      chikouSpan:  "626174",
-      senkouSpanA: "6CB57E",
-      senkouSpanB: "C86C64"
-    }
-  }
 });
 ```
 
